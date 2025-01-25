@@ -1,4 +1,4 @@
-//I define my remote procedure calls that will happen in-between the client and the server here.
+//I've defined my remote procedure calls that will happen in-between the client and the server here.
 //protoc --go_out=. --go-grpc_out=. proto/greet.proto
 
 syntax = "proto3";
