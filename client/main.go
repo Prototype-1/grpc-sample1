@@ -15,7 +15,7 @@ func main() {
 conn, err := grpc.NewClient("localhost" + port, grpc.WithTransportCredentials(insecure.NewCredentials()))
 
 if err != nil {
-	log.Fatalf("Did not connect: %v", err)
+	log.Fatalf("Failed to create gRPC client: %v", err)
 }
 defer conn.Close()
 
@@ -25,8 +25,8 @@ names := &pb.NamesList{
 	Names: [] string {"Aswin", "Anju", "Mebin"},
 }
 
-//callSayHello(client)
-//callSayHelloServerStream(client, names)
+callSayHello(client)
+callSayHelloServerStream(client, names)
 callSayHelloClientStream(client, names)
-//callHelloBidirectionalStream(client, names)
+callHelloBidirectionalStream(client, names)
 }
