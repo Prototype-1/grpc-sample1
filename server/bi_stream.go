@@ -10,7 +10,6 @@ import (
 func (s *helloServer) SayHelloBidirectionalStreaming(stream pb.GreetService_SayHelloBidirectionalStreamingServer) error {
 	log.Println("Bidirectional streaming started...")
 	for {
-		// Receive a message from the client
 		req, err := stream.Recv()
 		if err == io.EOF {
 			log.Println("Client closed the stream.")
@@ -21,10 +20,8 @@ func (s *helloServer) SayHelloBidirectionalStreaming(stream pb.GreetService_SayH
 			return err
 		}
 
-		// Log the received message
 		log.Printf("Received message from client: %s\n", req.Name)
 
-		// Create and send a response
 		res := &pb.HelloResponse{
 			Message: "Hello " + req.Name,
 		}

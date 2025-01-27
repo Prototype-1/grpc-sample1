@@ -13,25 +13,21 @@ const (
 )
 
 type helloServer struct {
-	pb.UnimplementedGreetServiceServer // Avoids breaking due to future protobuf changes
+	pb.UnimplementedGreetServiceServer 
 }
 
 func main() {
-	// Listen on the specified port
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("Failed to listen on port %v: %v", port, err)
 	}
 
-	// Create a new gRPC server
 	grpcServer := grpc.NewServer()
 
-	// Register the GreetService server implementation
 	pb.RegisterGreetServiceServer(grpcServer, &helloServer{})
 
 	log.Printf("Server is running on %v\n", port)
 
-	// Start serving requests
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
