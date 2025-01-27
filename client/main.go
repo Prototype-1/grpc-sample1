@@ -25,7 +25,8 @@ names := &pb.NamesList{
 	Names: [] string {"Aswin", "Anju", "Mebin"},
 }
 
-callSayHello(client)
-
-callSayHelloServerStream(client, names)
+//callSayHello(client)
+//callSayHelloServerStream(client, names)
+callSayHelloClientStream(client, names)
+//callHelloBidirectionalStream(client, names)
 }
